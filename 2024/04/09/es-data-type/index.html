@@ -13,13 +13,13 @@
 <meta property="og:site_name" content="Franky&#39;s Home">
 <meta property="og:description" content="介绍 ES 中的数据类型 ...">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/imgs/es-number-type.png">
+<meta property="og:image" content="http://example.com/images/es-number-type.png">
 <meta property="article:published_time" content="2024-04-09T12:59:11.000Z">
-<meta property="article:modified_time" content="2024-04-10T03:46:52.448Z">
+<meta property="article:modified_time" content="2024-04-10T03:54:56.986Z">
 <meta property="article:author" content="Frank Yan">
 <meta property="article:tag" content="ES">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/imgs/es-number-type.png">
+<meta name="twitter:image" content="http://example.com/images/es-number-type.png">
   
     <link rel="alternate" href="/atom.xml" title="Franky's Home" type="application/atom+xml">
   
@@ -106,7 +106,7 @@
       
         <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>es的字段都有一个字段类型，不同的类型都各有所长，比如keyword类型的字段适合做聚合和排序，而text的类型可以用来全文搜索。<br>下面按大类介绍下es常用的数据类型，es的数据字段的类型定义和搜索的方式紧密相关。</p>
 <h3 id="字段类型"><a href="#字段类型" class="headerlink" title="字段类型"></a>字段类型</h3><p>总结版本：ES7.10，Elasticsearch文档中的字段支持多种不同的数据类型</p>
-<p><img src="/imgs/es-number-type.png" alt="es-number-type.png"></p>
+<p><img src="/../images/es-number-type.png" alt="es-number-type.png"></p>
 <h4 id="Core-data-types-核心数据类型"><a href="#Core-data-types-核心数据类型" class="headerlink" title="Core data types(核心数据类型)"></a>Core data types(核心数据类型)</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">string(字符串)</span><br><span class="line">keyword，text</span><br><span class="line">1. 使用keyword类型的字段，其不会被分析，给什么值就原封不动地按照这个值索引，所以关键字字段只能按其确切值进行搜索，通常用于过滤、排序和聚合。</span><br><span class="line">2. 当一个字段是要被全文搜索的，比如Email内容、产品描述，应该使用text类型。设置text类型以后，字段内容会被分析，在生成倒排索引以前，字符串会被分析器分成一个一个token。text类型的字段不用于排序，很少用于聚合。</span><br><span class="line"></span><br><span class="line">Numeric(数字)</span><br><span class="line">整数类型</span><br><span class="line">long, integer, short, byte</span><br><span class="line">浮点类型</span><br><span class="line">double, float, half_float, scaled_float</span><br><span class="line"></span><br><span class="line">Date(日期)</span><br><span class="line">date</span><br><span class="line"></span><br><span class="line">Date nanoseconds(日期纳秒)</span><br><span class="line">date_nanos</span><br><span class="line"></span><br><span class="line">Boolean(布尔类型) 可以接受true/false/”true”/”false”值</span><br><span class="line">boolean</span><br><span class="line"></span><br><span class="line">Binary(二进制)</span><br><span class="line">binary</span><br><span class="line"></span><br><span class="line">Range(范围)</span><br><span class="line">integer_range, float_range, long_range, double_range, date_range, ip_range</span><br><span class="line">1. integer_range，带符号的32位整数区间，最小值-231，最大值231-1</span><br><span class="line">2. long_range，带符号的64位整数区间，最小值-263，最小值263-1</span><br></pre></td></tr></table></figure>
 
 <h4 id="Arrays-数组"><a href="#Arrays-数组" class="headerlink" title="Arrays(数组)"></a>Arrays(数组)</h4><pre><code>在Elasticsearch中，数组不需要专用的字段数据类型。默认情况下，任何字段都可以包含零个或多个值，但是数组中的所有值必须具有相同的数据类型。
